@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="form-container">
+        <h3 style="text-align: center; margin-bottom: 24px;">编辑待办事项</h3>
+        <form action="{{ url_for('edit', id=todo.id) }}" method="POST">
+            <div class="input-group" style="flex-direction: column">
+                <div style="margin-bottom: 16px">
+                    <label>标题</label>
+                    <input type="text" name="title" class="input-field" value="{{ todo.title }}" required>
+                </div>
+                <div style="margin-bottom: 24px">
+                    <label>截止日期</label>
+                    <input type="date" name="due_date" class="input-field" value="{{ todo.due_date.strftime('%Y-%m-%d') }}" required>
+                </div>
+                <div style="text-align: center">
+                    <button type="submit" class="button">保存</button>
+                    <a href="{{ url_for('index') }}" class="button" style="background: #909399">返回</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
